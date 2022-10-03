@@ -28,7 +28,7 @@ Features required:
 
 ### Component catalogue.
 
-[ Insert a screenshot from the UI that lists all the different placemarks and categories if required.
+[ Insert a screenshot from the UI that lists all the different placemarks and categories if required.]
 
 ### UI Design.
 
