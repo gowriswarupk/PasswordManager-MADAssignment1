@@ -46,8 +46,11 @@ class PasswordManagerJSONStore : PasswordManagerStore {
     override fun update(passwordmanager: PasswordManagerModel) {
         var foundPasswordManager = findOne(passwordmanager.id!!)
         if (foundPasswordManager != null) {
-            foundPasswordManager.title = passwordmanager.title
-            foundPasswordManager.description = passwordmanager.description
+            foundPasswordManager.category = passwordmanager.category
+            foundPasswordManager.name = passwordmanager.name
+            foundPasswordManager.username = passwordmanager.username
+            foundPasswordManager.password = passwordmanager.password
+            foundPasswordManager.notes= passwordmanager.notes
         }
         serialize()
     }

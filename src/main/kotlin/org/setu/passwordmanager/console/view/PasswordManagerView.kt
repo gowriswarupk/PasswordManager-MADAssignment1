@@ -17,6 +17,7 @@ class PasswordManagerView {
         println(" 3. List All Passwords")
         println(" 4. Search Passwords")
         println(" 5. Delete Password")
+        println(" 6. Filter Passwords") //update
         println("-1. Exit")
         println()
         print("Enter Option : ")
@@ -45,28 +46,46 @@ class PasswordManagerView {
     fun addPasswordManagerData(passwordmanager : PasswordManagerModel) : Boolean {
 
         println()
-        print("Enter a Title : ")
-        passwordmanager.title = readLine()!!
-        print("Enter a Description : ")
-        passwordmanager.description = readLine()!!
+        print("Enter a Category (email, finance, education, etc) : ")
+        passwordmanager.category = readLine()!!
+        print("Enter the name for the service (Google, Moodle, etc): ")
+        passwordmanager.name = readLine()!!
+        print("Enter your username: ")
+        passwordmanager.username = readLine()!!
+        print("Enter the password: ")
+        passwordmanager.password = readLine()!!
+        print("Enter additional notes (Leave Blank if not required): ")
+        passwordmanager.notes = readLine()!!
 
-        return passwordmanager.title.isNotEmpty() && passwordmanager.description.isNotEmpty()
+        return passwordmanager.category.isNotEmpty() && passwordmanager.name.isNotEmpty() && passwordmanager.username.isNotEmpty() && passwordmanager.password.isNotEmpty()
     }
 
     fun updatePasswordManagerData(passwordmanager : PasswordManagerModel) : Boolean {
 
-        val tempTitle: String?
-        val tempDescription: String?
+        val tempCategory: String?
+        val tempName: String?
+        val tempUsername: String?
+        val tempPassword: String?
+        val tempNotes: String?
 
         if (passwordmanager != null) {
-            print("Enter a new Title for [ " + passwordmanager.title + " ] : ")
-            tempTitle = readLine()!!
-            print("Enter a new Description for [ " + passwordmanager.description + " ] : ")
-            tempDescription = readLine()!!
+            print("Enter a new Category for [ " + passwordmanager.category + " ] : ")
+            tempCategory = readLine()!!
+            print("Enter a new Source Name for [ " + passwordmanager.name + " ] : ")
+            tempName = readLine()!!
+            print("Enter a new User Name for [ " + passwordmanager.username + " ] : ")
+            tempUsername = readLine()!!
+            print("Enter a new Password for [ " + passwordmanager.password + " ] : ")
+            tempPassword = readLine()!!
+            print("Enter any Notes for [ " + passwordmanager.notes + " ] (Leave Blank if not required): ")
+            tempNotes = readLine()!!
 
-            if (!tempTitle.isNullOrEmpty() && !tempDescription.isNullOrEmpty()) {
-                passwordmanager.title = tempTitle
-                passwordmanager.description = tempDescription
+            if (!tempCategory.isNullOrEmpty() && !tempName.isNullOrEmpty() && !tempUsername.isNullOrEmpty() && !tempPassword.isNullOrEmpty()) {
+                passwordmanager.category = tempCategory
+                passwordmanager.name = tempName
+                passwordmanager.username = tempUsername
+                passwordmanager.password = tempPassword
+                passwordmanager.notes = tempNotes
                 return true
             }
         }

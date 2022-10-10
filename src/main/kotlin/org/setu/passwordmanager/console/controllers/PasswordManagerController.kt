@@ -1,5 +1,6 @@
 package org.setu.passwordmanager.console.controllers
 
+import jdk.jfr.Category
 import mu.KotlinLogging
 import org.setu.passwordmanager.console.models.PasswordManagerJSONStore
 import org.setu.passwordmanager.console.models.PasswordManagerMemStore
@@ -29,6 +30,7 @@ class PasswordManagerController {
                 3 -> list()
                 4 -> search()
                 5 -> delete()
+                6 -> filter()
                 -99 -> dummyData()
                 -1 -> println("Exiting App")
                 else -> println("Invalid Option")
@@ -91,14 +93,18 @@ class PasswordManagerController {
             println("Password Not Deleted...")
     }
 
+    fun filter() {
+        passwordManagerView.listPasswordManagers(passwordmanagers)
+    }
+
     fun search(id: Long) : PasswordManagerModel? {
         var foundPasswordManager = passwordmanagers.findOne(id)
         return foundPasswordManager
     }
 
     fun dummyData() {
-        passwordmanagers.create(PasswordManagerModel(title = "New York New York", description = "So Good They Named It Twice"))
-        passwordmanagers.create(PasswordManagerModel(title= "Ring of Kerry", description = "Some place in the Kingdom"))
-        passwordmanagers.create(PasswordManagerModel(title = "Waterford City", description = "You get great Blaas Here!!"))
+        passwordmanagers.create(PasswordManagerModel(category = "email", name = "gmail.com", username = "gowriswarupk@gmail.com", password= "123456@mail!", notes = "security codes: 002020102  10102302310  102430042034" ))
+        passwordmanagers.create(PasswordManagerModel(category = "shopping", name = "ebay.com", username = "kgs@gmail.com", password= "ebayPassw0rd!", notes = "Purchase history updated?"))
+        passwordmanagers.create(PasswordManagerModel(category = "email", name = "gmail.com", username = "20087165@mail.wit.ie", password= "mailpassword@@", notes = "security codes: 087983475345  3454353459  8235928759"))
     }
 }
