@@ -10,7 +10,7 @@ import java.util.*
 
 private val logger = KotlinLogging.logger {}
 
-val JSON_FILE = "placemarks.json"
+val JSON_FILE = "passwordmanagersavefile.json"
 val gsonBuilder = GsonBuilder().setPrettyPrinting().create()
 val listType = object : TypeToken<java.util.ArrayList<PasswordManagerModel>>() {}.type
 
