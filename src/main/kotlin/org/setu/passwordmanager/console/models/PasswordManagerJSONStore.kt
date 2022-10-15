@@ -37,6 +37,11 @@ class PasswordManagerJSONStore : PasswordManagerStore {
         return foundPasswordManager
     }
 
+    fun findCat(category: String) : PasswordManagerModel? {
+        var foundPasswordManager: PasswordManagerModel? = passwordmanagers.find { p -> p.category == category }
+        return foundPasswordManager
+    }
+
     override fun create(passwordmanager: PasswordManagerModel) {
         passwordmanager.id = generateRandomId()
         passwordmanagers.add(passwordmanager)

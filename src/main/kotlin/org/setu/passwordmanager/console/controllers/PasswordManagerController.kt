@@ -93,12 +93,18 @@ class PasswordManagerController {
             println("Password Not Deleted...")
     }
 
-    fun filter() {
-        passwordManagerView.listPasswordManagers(passwordmanagers)
+    fun filter(){
+        val aPasswordManager = catsearch(passwordManagerView.getCategory())!!
+        passwordManagerView.showPasswordManager(aPasswordManager)
     }
 
     fun search(id: Long) : PasswordManagerModel? {
         var foundPasswordManager = passwordmanagers.findOne(id)
+        return foundPasswordManager
+    }
+
+    fun catsearch(category: String) : PasswordManagerModel? {
+        var foundPasswordManager = passwordmanagers.findCat(category)
         return foundPasswordManager
     }
 

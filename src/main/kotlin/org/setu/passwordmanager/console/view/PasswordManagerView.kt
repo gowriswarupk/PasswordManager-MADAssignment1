@@ -17,7 +17,7 @@ class PasswordManagerView {
         println(" 3. List All Passwords")
         println(" 4. Search Passwords")
         println(" 5. Delete Password")
-        println(" 6. Filter Passwords") //update
+        println(" 6. Filter Categories") //in progress
         println("-1. Exit")
         println()
         print("Enter Option : ")
@@ -102,5 +102,17 @@ class PasswordManagerView {
         else
             -9
         return searchId
+    }
+
+    fun getCategory() : String {
+        var strId : String? // String to hold user input
+        var searchCat : String // Long to hold converted id
+        print("Enter Category name to filter results : ")
+        strId = readLine()!!
+        searchCat = if (strId != null && !strId.isEmpty())
+            strId
+        else
+            (-9).toString()
+        return searchCat
     }
 }
