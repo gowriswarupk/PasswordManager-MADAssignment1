@@ -16,7 +16,7 @@ class PasswordManagerController {
 
     init {
         logger.info { "Launching Password Manager App" }
-        println("PasswordManager Kotlin App Version 1.0")
+        println("PasswordManager Kotlin App Version 1.2")
     }
 
     fun start() {
@@ -79,6 +79,16 @@ class PasswordManagerController {
         passwordManagerView.showPasswordManager(aPasswordManager)
     }
 
+    fun search(id: Long) : PasswordManagerModel? {
+        var foundPasswordManager = passwordmanagers.findOne(id)
+        return foundPasswordManager
+    }
+
+    fun catsearch(category: String) : PasswordManagerModel? {
+        var foundPasswordManager = passwordmanagers.findCat(category)
+        return foundPasswordManager
+    }
+
     fun delete() {
         passwordManagerView.listPasswordManagers(passwordmanagers)
         var searchId = passwordManagerView.getId()
@@ -98,15 +108,7 @@ class PasswordManagerController {
         passwordManagerView.showPasswordManager(aPasswordManager)
     }
 
-    fun search(id: Long) : PasswordManagerModel? {
-        var foundPasswordManager = passwordmanagers.findOne(id)
-        return foundPasswordManager
-    }
 
-    fun catsearch(category: String) : PasswordManagerModel? {
-        var foundPasswordManager = passwordmanagers.findCat(category)
-        return foundPasswordManager
-    }
 
     fun dummyData() {
         passwordmanagers.create(PasswordManagerModel(category = "email", name = "gmail.com", username = "gowriswarupk@gmail.com", password= "123456@mail!", notes = "security codes: 002020102  10102302310  102430042034" ))
