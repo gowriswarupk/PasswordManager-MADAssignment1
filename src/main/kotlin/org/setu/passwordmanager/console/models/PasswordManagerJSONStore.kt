@@ -38,7 +38,7 @@ class PasswordManagerJSONStore : PasswordManagerStore {
     }
 
     fun findCat(category: String) : PasswordManagerModel? {
-        var foundPasswordManager: PasswordManagerModel? = passwordmanagers.find { p -> p.category == category }
+        var foundPasswordManager: PasswordManagerModel? = passwordmanagers.find { p -> p.name == category }
         return foundPasswordManager
     }
 
